@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Mobile SMOKE TEST OLXID" verbose="3" parallel="tests" thread-count="1">
+
+    <!--<listeners>-->
+        <!--<listener class-name="listeners.RetryListeners" />-->
+    <!--</listeners>-->
+
+    <test name="Login Page OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.LoginPageTest"/>
+        </classes>
+    </test>
+    <test name="Login with OLX OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.LoginOLXTest"/>
+        </classes>
+    </test>
+    <test name="Category OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.SaldoOlxTest"/>
+        </classes>
+    </test>
+    <test name="Ads Details OLXID" preserve-order="false" >
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.AdsDetailsTest"/>
+        </classes>
+    </test>
+    <test name="Listing OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.ListingTest"/>
+        </classes>
+    </test>
+    <test name="Saldo OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.SaldoOlxTest"/>
+        </classes>
+    </test>
+    <test name="Filter OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.FilterTest"/>
+        </classes>
+    </test>
+    <test name="Post Ads OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.PostAdsTest"/>
+        </classes>
+    </test>
+    <!-- Failing Test -->
+    <test name="Paid Feature [Iklan Saya] - TOP LISTING OLXID" preserve-order="false" enabled="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.PaidFeatureIklanSayaTest"/>
+        </classes>
+    </test>
+    <!-- Failing Test -->
+    <test name="Paid Feature [Post Ads] - TOP LISTING OLXID" preserve-order="false" enabled="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.PaidFeaturePostAdsTest"/>
+        </classes>
+    </test>
+    <test name="Profile Test OLXID" preserve-order="false">
+        <groups>
+            <run>
+                <include name="smoke.test" />
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.ProfilSayaTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,25 @@
+{
+  "capabilities":
+  [
+    {
+      "deviceName": "athena-plugin-avd-nexus-6-api-24-0",
+      "version":"5.1.0",
+      "maxInstances": 3,
+      "platformName":"ANDROID"
+    }
+  ],
+  "configuration":
+  {
+    "cleanUpCycle":2000,
+    "timeout":30000,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url":"http://192.168.99.100:5555/wd/hub",
+    "host": "192.168.99.100",
+    "port": 5555,
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 5000,
+    "hubPort": 4444,
+    "hubHost": "192.168.99.100"
+  }
+}

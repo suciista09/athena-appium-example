@@ -1,0 +1,81 @@
+group 'olxid-mobile-sulley'
+version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'idea'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'ru.d10xa:gradle-allure-plugin:0.5.2'
+    }
+}
+apply plugin: 'ru.d10xa.allure'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+configurations {
+    agent
+}
+
+dependencies {
+    agent "org.aspectj:aspectjweaver:${aspectjVersion}"
+    compile 'io.appium:java-client:3.3.0'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.jayway.restassured:rest-assured:2.9.0'
+    compile 'com.jayway.restassured:json-schema-validator:2.9.0'
+    compile 'com.jayway.jsonpath:json-path:2.0.0'
+    compile 'org.seleniumhq.selenium:selenium-server:2.52.0'
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile 'org.hamcrest:hamcrest-all:1.3'
+    compile 'commons-net:commons-net:3.3'
+    compile 'org.json:json:20160212'
+    compile 'org.testng:testng:6.9.10'
+    compile 'ru.d10xa:gradle-allure-plugin:0.5.2'
+    compile "ru.yandex.qatools.allure:allure-testng-adaptor:${allureVersion}"
+    compile 'log4j:log4j:1.2.17'
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'org.slf4j:slf4j-simple:1.7.21'
+    compile 'com.android.tools.ddms:ddmlib:25.2.0'
+    compile 'ru.yandex.qatools.ashot:ashot:1.5.2'
+}
+
+allure {
+    aspectjweaver = true
+    testNG = true
+
+    allureResultsDir = "$projectDir/target/allure-results"
+    allureReportDir = "$projectDir/target/allure-report"
+    allureVersion = "${allureVersion}"
+    aspectjVersion = "${aspectjVersion}"
+
+    clean = true
+}
+
+task smoketest(type: Test) {
+    testLogging {
+        showStandardStreams true
+        exceptionFormat "short"
+
+        info {
+            events "started", "skipped", "failed"
+            exceptionFormat "short"
+        }
+    }
+    description = "Running Smoke Test from suites TestNG xml"
+    useTestNG {
+        suites "src/test/resources/smoketest/localtest.xml"
+    }
+}
+
+clean {
+    delete "$projectDir/Screenshots"
+    delete "$projectDir/target"
+    delete "$projectDir/test-output"
+}
+
+tasks.withType(Test)*.finalizedBy allureReport
